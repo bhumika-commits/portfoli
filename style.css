@@ -1,0 +1,151 @@
+/* ===== Global ===== */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #f8fafc;
+  line-height: 1.6;
+  transition: background 0.5s, color 0.5s;
+}
+
+/* ===== Header ===== */
+header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 20px;
+  background: rgba(15,23,42,0.9);
+  position: sticky; top: 0; z-index: 1000;
+}
+.logo { font-weight: bold; font-size: 1.3rem; }
+nav ul { display: flex; gap: 15px; list-style: none; }
+nav a { color: inherit; text-decoration: none; transition: color 0.3s; }
+nav a:hover { color: #38bdf8; }
+
+/* ===== Hamburger (Mobile) ===== */
+#menu-toggle { display: none; }
+.menu-icon { display: none; font-size: 1.5rem; cursor: pointer; }
+@media (max-width: 768px) {
+  nav ul {
+    position: absolute; top: 60px; right: 0;
+    background: rgba(15,23,42,0.95);
+    flex-direction: column; width: 200px;
+    transform: translateX(100%); transition: transform 0.3s;
+    padding: 20px;
+  }
+  #menu-toggle:checked ~ nav ul { transform: translateX(0); }
+  .menu-icon { display: block; }
+}
+
+/* ===== Theme Toggle ===== */
+#theme-toggle { display: none; }
+.theme-btn { font-size: 1.5rem; margin-left: 15px; cursor: pointer; }
+#theme-toggle:checked + .theme-btn::after { content: "☀"; }
+
+/* Light Mode */
+#theme-toggle:checked ~ body {
+  background: #f8fafc; color: #0f172a;
+}
+#theme-toggle:checked ~ body header { background: rgba(248,250,252,0.9); }
+#theme-toggle:checked ~ body nav ul { background: #e2e8f0; }
+#theme-toggle:checked ~ body footer { background: #e2e8f0; }
+
+/* ===== Hero Section ===== */
+.hero {
+  text-align: center;
+  padding: 120px 20px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+.highlight { color: #38bdf8; }
+.btn {
+  display: inline-block; margin-top: 20px;
+  padding: 10px 20px;
+  background: #38bdf8; color: #fff;
+  border-radius: 30px; text-decoration: none;
+  transition: transform 0.3s, background 0.3s;
+}
+.btn:hover { background: #0ea5e9; transform: scale(1.1); }
+
+/* Hero Animations */
+.hero-title {
+  opacity: 0; transform: scale(0.8);
+  animation: zoomIn 1s ease forwards;
+  animation-delay: 0.3s;
+}
+.hero-subtitle {
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.8s;
+}
+.hero-btn {
+  opacity: 0; transform: scale(0.5);
+  animation: popIn 0.8s ease forwards;
+  animation-delay: 1.3s;
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ===== Sections ===== */
+section { padding: 80px 20px; text-align: center; }
+h2 { margin-bottom: 20px; font-size: 2rem; }
+
+/* ===== Skills Grid ===== */
+.skill-grid {
+  display: grid; gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.card {
+  background: #1e293b; padding: 20px; border-radius: 12px;
+  transition: transform 0.3s, background 0.3s;
+}
+.card:hover { transform: translateY(-10px); background: #334155; }
+
+/* ===== Projects ===== */
+.project-grid {
+  display: grid; gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.project-card {
+  background: #1e293b; padding: 20px; border-radius: 12px;
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+.project-card:hover {
+  transform: rotateY(5deg) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* ===== Contact ===== */
+.contact a { color: #38bdf8; text-decoration: none; }
+.contact a:hover { text-decoration: underline; }
+
+/* ===== Footer ===== */
+footer {
+  background: #1e293b;
+  text-align: center; padding: 20px;
+}
+
+/* ===== Reveal Animations ===== */
+.reveal {
+  opacity: 0; transform: translateY(50px);
+  animation: fadeInUp 1s ease forwards;
+}
+.about.reveal { animation-delay: 0.4s; }
+.skills.reveal { animation-delay: 0.6s; }
+.projects.reveal { animation-delay: 0.8s; }
+.contact.reveal { animation-delay: 1s; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
